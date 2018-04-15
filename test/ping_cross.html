@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script src="http://127.0.0.1:3000/help/es5-shim.js"></script>
+
+        <script src="http://127.0.0.1:3000/help/promise.js"></script>
+
+        <script type="text/javascript" src="//127.0.0.1:4000/sfetch.js"></script>
+
+        <script type="text/javascript">
+        window.onload = function () {
+            sfetch.baseUrl = '//127.0.0.1:4000';
+
+            (function get1_1() {
+                var prom = sfetch({
+                    url: 'get_cross',
+                    data: {
+                        a: 1,
+                        b: 2
+                    },
+                    withCredentials: false,
+                    timeout: 5000,
+                    contentType: 'application/json'
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+                console.log(prom);
+            })();
+
+            (function post1() {
+
+                var prom = sfetch({
+                    type: 'post',
+                    url: '//127.0.0.1:4000/post_cross',
+                    data: {
+                        a: 1,
+                        b: 2
+                    },
+                    contentType: 'application/json'
+
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+            })();
+
+            // (function post2() {
+            //
+            //     var data = new FormData();
+            //     data.append('a', 1);
+            //
+            //     var prom = sfetch({
+            //         type: 'post',
+            //         url: '//127.0.0.1:4000/post_cross',
+            //         data: data ,
+            //         contentType: 'multipart/form-data'
+            //
+            //     }).then(function(res) {
+            //         console.log('success: ', res.responseText);
+            //     }, function(res) {
+            //         console.log('fail: ', res);
+            //     });
+            // })();
+
+            (function postOther() {
+                var prom = sfetch({
+                    type: 'get',
+                    url: '//u.focus-test.cn/api/v1/chatlist/unreadcount',
+                    withCredentials: true
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+            })();
+
+        }
+
+        </script>
+
+    </body>
+</html>

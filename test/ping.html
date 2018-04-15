@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script src="http://127.0.0.1:3000/help/es5-shim.js"></script>
+
+        <script src="http://127.0.0.1:3000/help/promise.js"></script>
+
+        <script type="text/javascript" src="//127.0.0.1:4000/sfetch.js"></script>
+
+        <script type="text/javascript">
+        window.onload = function () {
+            sfetch.baseUrl = '//127.0.0.1:3000';
+            (function getJsonp() {
+
+                var prom = sfetch({
+                    url: '/getJsonp',
+                    data: {
+                        a: 1,
+                        b: 2
+                    },
+                    jsonp: true
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+                console.log(prom);
+            })();
+
+            (function get1() {
+
+                var prom = sfetch({
+                    url: '/get',
+                    data: {
+                        a: 1,
+                        b: 2
+                    },
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+                console.log(prom);
+            })();
+
+            (function post1() {
+
+                var prom = sfetch({
+                    type: 'post',
+                    url: '/post',
+                    data: {
+                        a: 1,
+                        b: 2
+                    },
+                    contentType: 'application/json'
+
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+            })();
+
+            (function post2() {
+
+                var data = new FormData();
+                data.append('a', 1);
+
+                var prom = sfetch({
+                    type: 'post',
+                    url: '/post',
+                    data: data ,
+                    contentType: 'multipart/form-data'
+
+                }).then(function(res) {
+                    console.log('success: ', res);
+                }, function(res) {
+                    console.log('fail: ', res);
+                });
+            })();
+
+        }
+
+        </script>
+
+    </body>
+</html>

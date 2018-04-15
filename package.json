@@ -1,0 +1,36 @@
+{
+  "name": "sfax",
+  "version": "0.0.1",
+  "description": "一个兼容ie8的请求库",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c ./build/rollup.config.js && rollup -c ./build/rollup.proxy.config.js && node ./build/iframe-proxy.build.js",
+    "test": "node test/server.js & node test/server_cross.js"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "ip": "^1.1.5",
+    "open": "0.0.5",
+    "rollup": "^0.49.2",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-js": "^3.0.28",
+    "compression": "^1.7.2"
+  },
+  "author": "thinkzhan",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liberalist1991/sfetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liberalist1991/sfetch/issues"
+  },
+  "homepage": "https://github.com/liberalist1991/sfetch#readme"
+}
