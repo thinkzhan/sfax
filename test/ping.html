@@ -5,18 +5,18 @@
         <title></title>
     </head>
     <body>
-        <script src="http://127.0.0.1:3000/help/es5-shim.js"></script>
+        <script src="http://10.0.118.161:3000/help/es5-shim.js"></script>
 
-        <script src="http://127.0.0.1:3000/help/promise.js"></script>
+        <script src="http://10.0.118.161:3000/help/promise.js"></script>
 
-        <script type="text/javascript" src="//127.0.0.1:4000/sfetch.js"></script>
+        <script type="text/javascript" src="//10.0.118.161:4000/sfax.js"></script>
 
         <script type="text/javascript">
         window.onload = function () {
-            sfetch.baseUrl = '//127.0.0.1:3000';
+            sfax.baseUrl = '//10.0.118.161:3000';
             (function getJsonp() {
 
-                var prom = sfetch({
+                var prom = sfax({
                     url: '/getJsonp',
                     data: {
                         a: 1,
@@ -33,7 +33,7 @@
 
             (function get1() {
 
-                var prom = sfetch({
+                var prom = sfax({
                     url: '/get',
                     data: {
                         a: 1,
@@ -49,7 +49,7 @@
 
             (function post1() {
 
-                var prom = sfetch({
+                var prom = sfax({
                     type: 'post',
                     url: '/post',
                     data: {
@@ -70,7 +70,7 @@
                 var data = new FormData();
                 data.append('a', 1);
 
-                var prom = sfetch({
+                var prom = sfax({
                     type: 'post',
                     url: '/post',
                     data: data ,

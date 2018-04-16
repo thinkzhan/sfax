@@ -35,6 +35,9 @@ xdr.prototype.send = function () {
         if (options.timeout) {
             xdr.timeout = options.timeout;
         }
+        // if (options.contentType) {
+        //     xdr.contentType = options.contentType;
+        // }
         if (notGet) {
             xdr.send(paramData);
         } else {

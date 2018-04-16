@@ -1,25 +1,30 @@
 import xhr from '../lib/xhr'
+import util from '../util'
 
-window.addEventListener('message', function(e){
+util.addEvent('message', function(e){
     try {
         var data = JSON.parse(e.data);
-        new xhr(data).send().then(function (res) {
-            window.parent.postMessage({
+        new xhr(data).send().then(function(res) {
+            window.parent.postMessage(JSON.stringify({
                 originId: data.originId,
                 msg: {
                     status: 200,
                     data: res
                 }
-            }, data.origin);
-        }, function (res) {
-            window.parent.postMessage({
+            }), data.origin);
+
+        }, function(res) {
+            window.parent.postMessage(JSON.stringify({
                 originId: data.originId,
                 msg: {
                     status: 400,
                     data: res
                 }
-            }, data.origin);
+            }), data.origin);
         });
+
     } catch (e) {
+
     }
-}, false)
+
+}, window)

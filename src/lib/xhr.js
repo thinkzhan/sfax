@@ -17,15 +17,19 @@ xhr.prototype.send = function () {
                 }
             }
         };
-        xhr.onerror = function () {
-            return _this._handleError('error', reject);
-        };
-        xhr.ontimeout = function () {
-            return _this._handleError('timeout', reject);
-        };
-        xhr.onabort = function () {
-            return _this._handleError('abort', reject);
-        };
+        try {
+            xhr.onerror = function () {
+                return _this._handleError('error', reject);
+            };
+            xhr.ontimeout = function () {
+                return _this._handleError('timeout', reject);
+            };
+            xhr.onabort = function () {
+                return _this._handleError('abort', reject);
+            };
+        } catch (e) {
+
+        }
         var notGet = (typeof options.type === 'string' && options.type
             .toLowerCase() !== 'get');
         var paramData = util.flatParams(options.data);
@@ -40,7 +44,7 @@ xhr.prototype.send = function () {
         }
         xhr.open(options.type, options.type === 'get' ? options.url +
             '?' + paramData : options.url, true);
-        if (options.withCredentials) {
+        if (options.withCredentials && util.isCrossDomain(options.url)) {
             xhr.withCredentials = true;
         }
         if ((options.data != null)) {

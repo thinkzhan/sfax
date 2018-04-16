@@ -4,7 +4,7 @@ import xdr from './lib/xdr'
 import iframe from './lib/iframe'
 import jsonp from './lib/jsonp'
 
-function sfetch(options) {
+function sfax(options) {
     var dftOptions = {
         type: 'get',
         withCredentials: false,
@@ -16,7 +16,7 @@ function sfetch(options) {
     options = util.merge(dftOptions, options)
 
     if (!/^(http|\/[^\/]|\/\/)/.test(options.url)) {
-        options.url = sfetch.baseUrl + '/' + options.url
+        options.url = sfax.baseUrl + '/' + options.url
     }
     if (/^\/[^\/]/.test(options.url)) {
         options.url = location.protocol + '//' + location.host + options.url
@@ -44,6 +44,6 @@ function sfetch(options) {
     }
 }
 
-sfetch.baseUrl = '';
+sfax.baseUrl = '';
 
-export default sfetch
+export default sfax

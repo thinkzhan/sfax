@@ -81,5 +81,14 @@ export default {
             }
         }
         return encoded.join('&');
+    },
+
+    addEvent: function(event, handler, target) {
+        target = target || window;
+        if (window.addEventListener) {
+            target.addEventListener(event, handler, false);
+        } else {
+            target.attachEvent('on' + event, handler);
+        }
     }
 }

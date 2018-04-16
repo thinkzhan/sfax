@@ -2,9 +2,9 @@ const uglify = require('rollup-plugin-uglify');
 
 module.exports = {
     input: 'src/index.js',
-    name: 'sfetch',
+    name: 'sfax',
     output: {
-        file: 'dist/sfetch.js',
+        file: 'dist/sfax.js',
         format: 'umd'
     },
     plugins: [
